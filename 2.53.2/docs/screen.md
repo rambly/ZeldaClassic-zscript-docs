@@ -15,7 +15,7 @@ Each screen has 8 general purpose registers for use by script programmers. These
 Note that these registers are tied to screen/DMap combinations. Encountering the same screen in a different DMap will result in a different `D[]` array.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -32,9 +32,9 @@ Use the `SF_` constants in std.zh as the array access for this value, and the `G
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->EFlags[]
@@ -49,9 +49,9 @@ Use the `SEF_` constants in std.zh as the array access for this value, and the `
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ## Screen Combo Functions
@@ -64,9 +64,9 @@ int ComboD[]
 The combo ID of the `i`th combo on the screen, where `i` is the index used to access this array. Combos are counted left to right, top to bottom. Screen dimensions are 16 combos wide by 11 combos high. 
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->ComboC[]
@@ -77,9 +77,9 @@ int ComboC[]
 The CSet of the tile used by the `i`th combo on the screen, where `i` is the index used to access this array. Combos are counted left to right, top to bottom. Screen dimensions are 16 combos wide by 11 combos high. 
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->ComboF[]
@@ -92,9 +92,9 @@ The placed flag of `i`th combo on the screen, where `i` is the index used to acc
 Use the `CF_` constants in std.zh to set or compare these values.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->ComboI[]
@@ -107,9 +107,9 @@ The inherent flag of `i`th combo on the screen, where `i` is the index used to a
 Use the `CF_` constants in std.zh to set or compare these values.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->ComboT[]
@@ -122,9 +122,9 @@ The combo type of `i`th combo on the screen, where `i` is the index used to acce
 Use the `CT_` constants in std.zh to set or compare these values.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->ComboS[]
@@ -142,9 +142,9 @@ To help visualize, if we take a binary number `0000` and represent the 4 digits 
 	3 1
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->MovingBlockX
@@ -157,9 +157,9 @@ The X position of the current moving block. If there is no moving block on the s
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->MovingBlockY
@@ -172,9 +172,9 @@ The Y position of the current moving block. If there is no moving block on the s
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->MovingBlockCombo
@@ -185,9 +185,9 @@ int MovingBlockCombo
 The combo of the current moving block. If there is no moving block on the screen, the value is undefined.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->MovingBlockCSet
@@ -198,9 +198,9 @@ int MovingBlockCSet
 The CSet used by the current moving block. If there is no moving block on the screen, the value is undefined.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ## Screen State Functions
@@ -213,9 +213,9 @@ int UnderCombo
 The current screen's under combo.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->UnderCSet
@@ -226,9 +226,9 @@ int UnderCSet
 The current screen's under CSet.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->State[]
@@ -241,9 +241,9 @@ Screen states involve such things as permanent screen secrets, the status of loc
 These values are recorded in the save file when the player saves their game. Use the `ST_` constants in std.zh as indices into this array.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Door[]
@@ -254,9 +254,9 @@ int Door[]
 The door type for each of the four doors on a screen. Doors are counted using the first four `DIR_` constants in std.zh. Use the `D_` constants in std.zh to compare these values.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->RoomType
@@ -269,9 +269,9 @@ The room type of the current screen (Special Item, Bomb Upgrade, et al.)
 Use the `RT_` constants in std.zh to compare this value.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->RoomData
@@ -284,9 +284,9 @@ This is the data associated with the room type above. What it means depends on t
 If the room type has no data (eg, Ganon's room), this will be undefined.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->TriggerSecrets()
@@ -298,8 +298,6 @@ Triggers screen secrets temporarily. Set `Screen->State[ST_SECRET]` to `true` be
 
 <!-- **Example** -->
 
-	Screen->TriggerSecrets()
-	
 ---
 
 ### Screen->Lit
@@ -310,9 +308,9 @@ bool Lit
 Whether or not the screen is lit. Setting this variable will change the lighting setting of the screen until you change screens.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Wavy
@@ -323,9 +321,9 @@ int Wavy
 The time, in frames, that the 'wave' screen effect will be in effect. This value is decremented once per frame. As the value of Wavy approaches 0, the intensity of the waves decreases.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Quake
@@ -336,11 +334,11 @@ int Quake
 The time, in frames, that the screen will shake. This value is decremented once per frame. As the value of Quake approaches 0, the intensity of the screen shaking decreases.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 	
 ## Warp Data Functions
-	
+
 ---
 
 ### Screen->SetSideWarp()
@@ -353,9 +351,9 @@ Sets the current screen's side warp 'warp' to the destination screen, DMap and t
 The side warp directions match the `DIR_` contants in std.zh.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->SetTileWarp()
@@ -368,9 +366,9 @@ Sets the current screen's tile warp `warp` to the destination screen, DMap and t
 Warp tiles A, B, C, and D are 0, 1, 2, and 3 respectively.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetSideWarpDMap()
@@ -383,9 +381,9 @@ Returns the destination DMap of the given side warp on the current screen. Retur
 The side warp directions match the `DIR_` contants in std.zh.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetSideWarpScreen()
@@ -398,9 +396,9 @@ Returns the destination screen of the given side warp on the current screen. Ret
 The side warp directions match the `DIR_` contants in std.zh.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetSideWarpType()
@@ -413,9 +411,9 @@ Returns the warp type of the given side warp on the current screen. Returns -1 i
 The side warp directions match the `DIR_` contants in std.zh.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetTileWarpDMap()
@@ -428,9 +426,9 @@ Returns the destination DMap of the given tile warp on the current screen. Retur
 Warp tiles A, B, C, and D are 0, 1, 2, and 3 respectively.
 
 <!-- **Example** -->
+!!! error "TODO"
+	(TODO) !
 
-	(TODO) !	
-	
 ---
 
 ### Screen->GetTileWarpScreen()
@@ -443,9 +441,9 @@ Returns the destination screen of the given tile warp on the current screen. Ret
 Warp tiles A, B, C, and D are 0, 1, 2, and 3 respectively.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetTileWarpType()
@@ -458,7 +456,7 @@ Returns the warp type of the given tile warp on the current screen. Returns -1 i
 Warp tiles A, B, C, and D are 0, 1, 2, and 3 respectively.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -473,9 +471,9 @@ int LayerMap(int n)
 Returns the map of the screen currently being used as the `n`th layer. Values of `n` less than 1 or greater than 6, or layers that are not set up, returns -1.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LayerScreen()
@@ -486,9 +484,9 @@ int LayerScreen(int n)
 Returns the number of the screen currently being used as the `n`th layer. Values of `n` less than 1 or greater than 6, or layers that are not set up, returns -1.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ## Object Functions
@@ -503,9 +501,9 @@ Returns the number of items currently present on the screen. Screen items, shop 
 Note that this value is only correct up until the next call to `Waitframe()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LoadItem()
@@ -518,9 +516,9 @@ Returns a pointer to the `num`th item on the current screen. The return value is
 Attempting to return an invalid item pointer will print an error to allegro.log. 
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->CreateItem()
@@ -531,9 +529,9 @@ item CreateItem(int id)
 (TODO) !
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LoadFFC()
@@ -546,9 +544,9 @@ Returns a pointer to the `num`th FFC on the current screen. The return value is 
 Note that FFCs don't need to be created, per se. All 32 FFCs on a screen technically always exist, albeit with "blank" initial values if they aren't otherwise set. To "create" an FFC, all you have to do is load a slot and fill out the parameters you want.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->NumNPCs()
@@ -559,9 +557,9 @@ int NumNPCs()
 Returns the number of NPCs (enemies and guys) on the screen. Note that this value is only correct up until the next call to `Waitframe()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LoadNPC()
@@ -572,9 +570,9 @@ npc LoadNPC(int num)
 Returns a pointer to the `num`th NPC on the current screen. The return value is undefined unless `1 <= num <= NumNPCs()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->CreateNPC()
@@ -587,9 +585,9 @@ Creates an npc of the given type at `(0,0)`. Use the `NPC_` constants in std.zh 
 The maximum number of NPCs on any given screen is 255. ZC will report an error to allegro.log if you try to create NPCs after reaching that maximum.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->NumLWeapons()
@@ -600,9 +598,9 @@ int NumLWeapons()
 Returns the number of Link weapon projectiles currently present on the screen. This includes things like Link's arrows, bombs, magic, etc. Note that this value is only correct up until the next call of `Waitframe()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LoadLWeapon()
@@ -613,9 +611,9 @@ lweapon LoadLWeapon(int num)
 Returns a pointer to the `num`th lweapon on the current screen. The return value is undefined unless `1 <= num <= NumLWeapons()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->CreateLWeapon()
@@ -630,7 +628,7 @@ The maximum number of lweapons on any given screen is 255. ZC will **NOT** repor
 This cap is for *all* lweapons of any type. Mixing types will not increase this cap.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -643,9 +641,9 @@ int NumEWeapons()
 Returns the number of Enemy weapon projectiles currently present on the screen. This includes things like Enemy arrows, bombs, magic, etc. Note that this value is only correct up until the next call of `Waitframe()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->LoadEWeapon()
@@ -656,9 +654,9 @@ lweapon LoadEWeapon(int num)
 Returns a pointer to the `num`th eweapon on the current screen. The return value is undefined unless `1 <= num <= NumEWeapons()`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->CreateEWeapon()
@@ -673,7 +671,7 @@ The maximum number of eweapons on any given screen is 255. ZC will **NOT** repor
 This cap is for *all* eweapons of any type. Mixing types will not increase this cap.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 	
 ## Misc. Screen Functions
@@ -690,7 +688,7 @@ Returns true if the screen position `(x, y)` is solid&mdash;that is, if it is wi
 It will also return false if the only applicable solid combo is a solid water combo that has recently been 'dried' by the whistle.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -703,7 +701,7 @@ void ClearSprites(int spritelist)
 Clears all of a certain kind of sprite from the screen. Use the `SL_` constants in std.zh to pass into this method.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -716,9 +714,9 @@ void Message(int string)
 Prints the message `string` with given ID onto the screen. If `string` is 0, the currently displayed message is removed. This method's behavior is undefined if `string` is less than 0 or greater than the total number of messages in the quest.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ## 2D Shape Drawing Commands
@@ -748,9 +746,9 @@ Draws a rectangle on the specified layer of the current screen, using `(x,y)` as
 A filled rectangle is drawn if `fill` is true; otherwise, this method draws a wireframe.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Circle()
@@ -763,9 +761,9 @@ Draws a circle on the specified layer of the current screen with center `(x,y)` 
 A filled rectangle is drawn if `fill` is true; otherwise, this method draws a wireframe.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Arc()
@@ -780,9 +778,9 @@ The arc beings at `startangle` degrees counterclockwise from standard position, 
 If `closed` is true, a line is drawn from the center of the circle to each endpoint of the arc, forming a sector of the circle. If `fill` is also true, a filled sector is drawn instead.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Ellipse()
@@ -795,9 +793,9 @@ Draws an ellipse on the specified layer of the current screen with center `(x,y)
 A filled ellipse is drawn if `fill` is true; otherwise, this method draws a wireframe.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Spline()
@@ -808,9 +806,9 @@ void Spline(int layer, int x1, int y1, int x2, int y2, int x3, int y3, int x4, i
 Draws a cardinal spline on the specified layer of the current screen between `(x1,y1)` and `(x4,y4)`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Line()
@@ -823,9 +821,9 @@ Then scales the line uniformly by a factor of `scale` about the line's midpoint.
 Finally, performs a rotation counterclockwise, centered about the point `(rx, ry)`, using an angle of rangle degrees.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->PutPixel()
@@ -836,9 +834,9 @@ void PutPixel(int layer, int x, int y, int color, int rx, int ry, int rangle, in
 Draws a raw pixel on the specified layer of the current screen at `(x,y)`. Then performs a rotation counterclockwise, centered about the point `(rx, ry)`, using an angle of `rangle` degrees.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawTile()
@@ -864,9 +862,9 @@ Scale specifies the actual size in pixels! So scale 1 would mean it is only one 
 If transparency is true, the tiles' transparent regions will be respected.  `opacity` controls the translucency of the solid portions of the tile.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->FastTile()
@@ -877,9 +875,9 @@ void FastTile(int layer, int x, int y, int tile, int cset, int opacity)
 Optimized and simpler version of `DrawTile()`. Draws a single tile on the current screen much in the same way as **[DrawTile()](#screen-drawtile)**. See **[DrawTile()](#screen-drawtile)**, just above, for an explanation on what these arguments do.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawCombo()
@@ -905,9 +903,9 @@ Scale specifies the actual size in pixels! So scale 1 would mean it is only one 
 If transparency is true, the tiles' transparent regions will be respected.  `opacity` controls the translucency of the solid portions of the tile.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->FastCombo()
@@ -918,9 +916,9 @@ void FastCombo(int layer, int x, int y, int combo, int cset, int opacity)
 Optimized and simpler version of `DrawCombo()`. Draws a single combo on the current screen much in the same way as `DrawCombo()`. See `DrawCombo()`, just above, for an explanation on what these arguments do.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawCharacter()
@@ -933,9 +931,9 @@ Draws a single ASCII character `glyph` on the specified layer of the current scr
 The arguments `width` and `height` may be used to draw the glyph of any arbitrary size begining at 1 pixel up to 512 pixels large. (more than four times the size of the screen). Passing 0 or negative values to this will use the font's default width and height.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawInteger()
@@ -950,9 +948,9 @@ The arguments `width` and `height` may be used to draw the number of any arbitra
 The number can be rendered as type `int` or `float` by setting the argument `number_decimal_places`, which is only valid if set to 0 or `<=` 4.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawString()
@@ -971,7 +969,7 @@ The array pointer should be passed as the argument for `*ptr`, ie.
 `int format` tells the engine how to format the string. (see std.zh for `TF_*` list to pass to this method)
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -1007,9 +1005,9 @@ From there a single or block of tiles or combos is then texture mapped onto the 
 See std.zh for a list of all available `render_mode` arguments.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Triangle()
@@ -1031,9 +1029,9 @@ From there a single or block of tiles or combos is then texture mapped onto the 
 See std.zh for a list of all available `render_mode` arguments.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->Triangle3D()
@@ -1062,7 +1060,7 @@ Arguments take the form of array pointers: Thus, you must declare arrays with th
 See std.zh for a list of all available `render_mode` arguments.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -1084,9 +1082,9 @@ Arguments take the form of array pointers: Thus, you must declare arrays with th
 See std.zh for a list of all available `render_mode` arguments.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ## Bitmap, Screen, and Layer Drawing Commands
@@ -1101,9 +1099,9 @@ Sets the target bitmap for all succesive drawing commands. These can be directly
 See std.zh for a complete list of valid render targets (`RT_*`).
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->GetRenderTarget()
@@ -1116,9 +1114,9 @@ Returns the ID of the current screen render target.
 See std.zh for a complete list of valid render targets (`RT_*`).
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawBitmap()
@@ -1138,14 +1136,16 @@ If `mask` is set to true, translucent areas of the bitmap will be cropped out wh
 :	Script drawing functions are enqueued and executed in a frame-by-frame basis based on the order of which layer they need to be drawn to. Drawing to or from seperate render tagets or bitmaps is no exception!
 
 <!-- **Example** -->
+``` C
+Screen->Bitmap(6, RT_BITMAP1, 0, 0, 16, 16, 79, 57, 32, 32, 0, true)
 
-	Screen->Bitmap(6, RT_BITMAP1, 0, 0, 16, 16, 79, 57, 32, 32, 0, true)
+// Takes a 16x16 section of the 2nd bitmap at coordinates 0,0
+// and draws it at coordinates 79,57 on layer 6 of the screen.
+// This particular command's destination rectangle is 32x32,
+// so the image will be scaled up 2x.
 	
-	// Takes a 16x16 section of the 2nd bitmap at coordinates 0,0
-	// and draws it at coordinates 79,57 on layer 6 of the screen.
-	// This particular command's destination rectangle is 32x32,
-	// so the image will be scaled up 2x.
-	
+```
+
 ---
 
 ### Screen->DrawLayer()
@@ -1158,9 +1158,9 @@ Draws an entire Layer from source_screen on source_map on the specified layer of
 `opacity` controls how translucent the solid portions of the tiles will be, either `OP_OPAQUE` or `OP_TRANS`.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
-	
+
 ---
 
 ### Screen->DrawScreen()
@@ -1171,5 +1171,5 @@ void DrawScreen(int layer, int map, int screen, int x, int y, float rotation)
 Draws an entire screen from `screen` on `map` on the specified layer of the current screen at `(x,y)`. If rotation is non-zero, the entire layer will rotate about its center.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !

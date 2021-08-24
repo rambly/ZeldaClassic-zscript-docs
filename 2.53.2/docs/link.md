@@ -15,7 +15,7 @@ int X
 The player's X position on the screen, in pixels. Float values passed to this will be truncated to ints.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -28,7 +28,7 @@ int Y
 The player's Y position on the screen, in pixels. Float values passed to this will be truncated to ints.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -41,7 +41,7 @@ int Z
 The player's Z position on the screen, in pixels. Float values passed to this will be truncated to ints.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -56,7 +56,7 @@ bool Invisible
 Whether the player is currently being draw to the screen. Set this to `true` to remove the player's visibility, `false` to make the player visible.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -71,7 +71,7 @@ If `true`, the player's collision detection with npcs and eweapons is currently 
 This variable works on a different system to clocks and the level 4 cheat, so it will not necessarily return true if they are set.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -86,7 +86,7 @@ The player's upward velocity, in pixels. If negative, the player will fall.
 The downward acceleration of gravity (in Init Data) modifies this value every frame. <!-- Zoria wrote that this value is intended to be in pixels, but appears to be in tiles. This might be a bug that was fixed? -->
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -99,7 +99,7 @@ int SwordJinx
 The time, in frames, until the player regains use of their sword. -1 signifies a permanent loss of the sword caused by a Red Bubble.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -112,7 +112,7 @@ int ItemJinx
 The time, in frames, until the player regains use of items. -1 signifies a permanent loss of their items caused by a Red Item Bubble.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -127,7 +127,7 @@ The time, in frames, that the player will be "drunk". If positive, the player's 
 This value is decremented once per frame. As the value of Drunk approaches 0, the intensity of the effect decreases.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -144,7 +144,7 @@ NOTE
 	Reading this value occurs after **[Waitdraw()](global.html#waitdraw)**.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -159,7 +159,7 @@ The direction the player should bounce in when they are hit. This is mostly usef
 This value does nothing is `Link->Action` is not `LA_GOTHURTLAND` or `LA_GOTHURTWATER`. Forcing this value to -1 will prevent player knockback (i.e. from injuries or enemy interactions).
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -172,7 +172,7 @@ int HP
 The player's current hitpoints measured as 1/16th of a heart.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -185,7 +185,7 @@ int MP
 The player's current magic points measured as 1/32nd of a magic block.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -198,7 +198,7 @@ int MaxHP
 The player's current maximum HP measured as 1/16th of a heart.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -211,7 +211,7 @@ int MaxMP
 The player's current maximum MP measured as 1/32nd of a magic block.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -230,7 +230,7 @@ This value is read-write, but some actions are undefined in this version of ZC. 
 The effect of writing to this field is currently undefined.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -245,7 +245,7 @@ The item that the player will hold over his head if an item's Pickup flags are `
 Use the `I_` constants in **std.zh** to specify the item, or -1 to show no item.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -260,7 +260,7 @@ The X position of the player's stepladder, or 0 if no ladder is onscreen.
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -275,7 +275,7 @@ The Y position of the player's stepladder, or 0 if no ladder is onscreen.
 This is read-only; while setting it is not syntactically incorrect, it does nothing.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -410,7 +410,7 @@ int InputMouseX
 The mouse's in-game X position. This value is undefined if the mouse pointer is outside the Zelda Classic window.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---
@@ -423,7 +423,7 @@ int InputMouseY
 The mouse's in-game Y position. This value is undefined if the mouse pointer is outside the Zelda Classic window.
 
 <!-- **Example** -->
-
+!!! error "TODO"
 	(TODO) !
 
 ---

@@ -12,17 +12,21 @@ Nearly every ZScript function corresponds to a ZASM instruction. Where possible,
 
 Internal functions and variables other than global functions are properties of **objects**, all of which are listed along the sidebar. Each object has a corresponding *typed pointer class*, and the syntax for accessing them is:
 
-	object->property
+```C
+object->property
+```
 	
 where *object* is the object's name (e.g. Link, Game, Screen) and *property* is the object's function.
 
 For example, the function `void GetCurDMap()` is a property of the `Game` object, and is called in ZScript as:
 
-	Game->GetCurDMap();
+```C
+Game->GetCurDMap();
+```
 
 The `Link`, `Screen` and `Game` objects are one-of-a-kind, always available, and don't need to be initialized. Other classes, such as `ffc`, `item`, and `npc` must be initialized as objects, however, as there can be multiple instances of each.
 
-It is not currently possible to create your own custom classes.
+As of 2.53, it is not possible to create your own custom classes.
 
 # Typing
 
@@ -30,4 +34,5 @@ ZScript variables are of the types `int`, `float`, and `bool`. As described abov
 
 ZScript functions are of the types `int`, `float`, `bool`, or `void`. Of these, only `void` does not return a value. (The `void` type is normally used to run a series of instructions without returning a value.) The other types return values appropriate to their type.
 
-**NOTE:** In the following, `int` indicates that a parameter is truncated by a function to an integer, or that the return value will always be an integer. However, ZScript itself does not make a distiction between `int` and `float` types.
+!!! note
+	Throughout the following documentation, `int` indicates that a parameter is truncated by a function to an integer, or that the return value will always be an integer. However, ZScript itself does not make a distiction between `int` and `float` types.

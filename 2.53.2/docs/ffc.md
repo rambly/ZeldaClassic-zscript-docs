@@ -215,7 +215,7 @@ The number of tile rows composing the FFC, or its visible height. The maximum va
 int EffectWidth
 :	* ZASM Instruction: `FFCWIDTH<d3>`
 
-The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" effect larger or smaller areas. The maximum value is `64`.
+The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" affect larger or smaller areas. The maximum value is `64`.
 
 <!-- **Example** -->
 
@@ -228,7 +228,7 @@ The width (in pixels) of the area of effect of the combo associated with the FFC
 int EffectHeight
 :	* ZASM Instruction: `FFCHEIGHT<d3>`
 
-The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" effect larger or smaller areas.  The maximum value is `64`.
+The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" affect larger or smaller areas.  The maximum value is `64`.
 
 <!-- **Example** -->
 

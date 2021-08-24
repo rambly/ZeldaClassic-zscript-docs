@@ -179,7 +179,8 @@ Use the `FFCF_` constants in **std.zh** as the index to access a particular flag
 
 <!-- **Example** -->
 
-	(TODO) !
+	MyFFC->Flags[FFCF_TRANS] = true; // Sets the "Translucent" flag of the FFC to true.
+	bool IsChanger = MyFFC->Flags[FFCF_CHANGER]; // Reads the state of the "Is A Changer" flag.
 	
 ---
 
@@ -188,11 +189,11 @@ Use the `FFCF_` constants in **std.zh** as the index to access a particular flag
 int TileWidth
 :	* ZASM Instruction: `FFTWIDTH<d3>`, `WIDTH<>`
 
-The number of tile columns composing the FFC. The maximum value is `4`.
+The number of tile columns composing the FFC, or its visible width. The maximum value is `4`.
 
 <!-- **Example** -->
 
-	(TODO) !
+	MyFFC->TileWidth = 2; // Sets the tile colums for the FFC to 2.
 	
 ---
 
@@ -201,11 +202,11 @@ The number of tile columns composing the FFC. The maximum value is `4`.
 int TileHeight
 :	* ZASM Instruction: `FFTHEIGHT<d3>`, `HEIGHT<>`
 
-The number of tile rows composing the FFC. The maximum value is `4`.
+The number of tile rows composing the FFC, or its visible height. The maximum value is `4`.
 
 <!-- **Example** -->
 
-	(TODO) !
+	MyFFC->TileHeight = 3; // Sets the tile colums for the FFC to 3.
 	
 ---
 
@@ -214,11 +215,11 @@ The number of tile rows composing the FFC. The maximum value is `4`.
 int EffectWidth
 :	* ZASM Instruction: `FFCWIDTH<d3>`
 
-The width (in pixels) of the area of effect of the combo associated with the FFC. The maximum value is `64`.
+The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" effect larger or smaller areas. The maximum value is `64`.
 
 <!-- **Example** -->
 
-	(TODO) !
+	MyFFC->EffectWidth = 32; // Sets the area of effect's width to 32 pixels.
 	
 ---
 
@@ -227,11 +228,11 @@ The width (in pixels) of the area of effect of the combo associated with the FFC
 int EffectHeight
 :	* ZASM Instruction: `FFCHEIGHT<d3>`
 
-The width (in pixels) of the area of effect of the combo associated with the FFC. The maximum value is `64`.
+The width (in pixels) of the area of effect of the combo associated with the FFC. This will make combo types such as "Damage(X Heart)" effect larger or smaller areas.  The maximum value is `64`.
 
 <!-- **Example** -->
 
-	(TODO) !
+	MyFFC->EffectHeight = 20; // Sets the area of effect's width to 20 pixels.
 	
 ---
 

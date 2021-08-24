@@ -1,3 +1,3 @@
-REM launch mkdocs
-cd ./zscript-docs-2.53.2/
+cd ./2.53.2/
 mkdocs serve
+start http://localhost:8000/

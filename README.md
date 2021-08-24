@@ -23,4 +23,4 @@ The .md files are written using [Markdown](https://daringfireball.net/projects/m
       !!! note
             This text will show up in a note box, hopefully.
 
-You can run `mkdocs serve` from the command line, then navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see the document in HTML format. It will automatically update as you save the .md files. To close the server, just hit `CTRL-C` in the command prompt you started the server from.
+You can run `mkdocs serve` from the command line, then navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see the document in HTML format. If you're on Windows, you can just run the batch file. It will automatically update as you save the .md files. To close the server, just hit `CTRL-C` in the command prompt you started the server from.

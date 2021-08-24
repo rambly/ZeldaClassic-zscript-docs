@@ -6,7 +6,7 @@ ZScript supports numerical input of **decimal**, **hexadecimal**, and **binary**
 
 To input hexadecimal numbers, prefix them with `0x`. To input binary numbers, append `b` to the end of the value. Example:
 
-``` C
+``` C++
 int MyCoolHexNumber = 0x0F; // same as decimal 15
 int MyCoolBinaryNumber = 0011b; // same as decimal 3
 ```
@@ -18,7 +18,7 @@ Plus (+)
 
 Adds values `a + b` together.
 
-``` C
+``` C++
 int x = 2;
 int y;
 
@@ -32,7 +32,7 @@ Minus (-)
 
 Subtracts a value from another `a - b`.
 
-``` C
+``` C++
 int x = 7;
 int y;
 
@@ -46,7 +46,7 @@ Increment (++)
 
 Increments a value by **1**. This modifies the original variable.
 
-``` C
+``` C++
 int x = 17;
 x++; // will be 18
 ```
@@ -58,7 +58,7 @@ Decrement (--)
 
 Decrements a value by **1**. This modifies the original variable.
 
-``` C
+``` C++
 int x = 8;
 x--; // will be 7
 ```
@@ -70,7 +70,7 @@ Multiply (*)
 
 Multiplies values `a * b`.
 
-``` C
+``` C++
 int x = 6;
 int y;
 
@@ -84,7 +84,7 @@ Divide (/)
 
 Divides values `a / b`.
 
-``` C
+``` C++
 int x = 20;
 int y;
 
@@ -98,7 +98,7 @@ Modulus (%)
 	
 Returns the remainder of integer division `a % b`.
 
-``` C
+``` C++
 int x = 23;
 int y;
 
@@ -114,7 +114,7 @@ Set (=)
 
 Sets value `a = b`.
 
-``` C
+``` C++
 int a = 3;
 int b;
 
@@ -133,7 +133,7 @@ Equal (==)
 
 Compares values `a == b` and returns `true` if they match. **Note that this is TWO equals signs, not one. One equals sign will cause a variable to be set instead!**
 
-``` C
+``` C++
 if ((2 + 2) == 4) // will evaluate to true
 if ((6 + 167) == 4) // will evaluate to false
 ```
@@ -145,7 +145,7 @@ Less Than (<)
 
 Compares values `a < b` and returns `true` if the value of `a` is smaller than the value of `b`.
 
-``` C
+``` C++
 if (6 < 7) // will evaluate to true
 if (3 < 1) // will evaluate to false
 ```
@@ -157,7 +157,7 @@ Greater Than (>)
 
 Compares values `a > b` and returns `true` if the value of `a` is larger than the value of `b`.
 
-``` C
+``` C++
 if (8 > 3) // will evaluate to true
 if (1 > 9) // will evaluate to false
 ```
@@ -173,7 +173,7 @@ NOT (!)
 
 Inverts the logic of any boolean value. That is, `false` becomes `true` and `true` becomes `false`.
 
-``` C
+``` C++
 bool PlayerIsDancing = false;
 if (!PlayerIsDancing)
 // The player is not a disco dancer, so this will evaluate to true
@@ -188,7 +188,7 @@ Logical OR (||)
 
 `a || b` evaluates to true if either condition `a` or condition `b` is true.
 
-``` C
+``` C++
 int a = 1;
 if ((a + 1 == 2) || (a + 5 == 17)) {
 	DoSomething();
@@ -205,7 +205,7 @@ Logical AND (&&)
 
 `a && b` evaluates to true if conditions `a` and `b` are **both** true.
 
-``` C
+``` C++
 int a = 5;
 if ((a * 2 == 10) && (a - 1 == 17)) {
 	DoSomething();

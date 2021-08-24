@@ -1136,7 +1136,7 @@ If `mask` is set to true, translucent areas of the bitmap will be cropped out wh
 :	Script drawing functions are enqueued and executed in a frame-by-frame basis based on the order of which layer they need to be drawn to. Drawing to or from seperate render tagets or bitmaps is no exception!
 
 <!-- **Example** -->
-``` C
+``` C++
 Screen->Bitmap(6, RT_BITMAP1, 0, 0, 16, 16, 79, 57, 32, 32, 0, true)
 
 // Takes a 16x16 section of the 2nd bitmap at coordinates 0,0

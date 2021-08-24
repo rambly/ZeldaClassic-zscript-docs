@@ -51,7 +51,7 @@ Temporarily halts execution of the current script. This function returns at the 
 	A `Waitframe()` is required in all infinite loops (like `while (true)`) so that ZC may pause to break in order to advance to the next frame, then resume the loop from the start. Without a `Waitframe()` instruction, any infinite loops will cause the game to hang.
 
 <!-- **Example** -->
-``` C
+``` C++
 while (true)
 {
 	/// Infinite loop that does stuff once per frame!!
@@ -74,7 +74,7 @@ Terminates execution of the current script. Does not return.
 	If called from a global script, the script itself exits. *All* script processing halts.
 
 <!-- **Example** -->
-``` C
+``` C++
 DoSomeStuff(); // This command will run.
 Quit(); 
 DoSomeMoreStuff(); // This command and any subsequent commands will not run.
@@ -97,7 +97,7 @@ Copies the tile specified by scrtile onto the tile space specified by desttile. 
 	When doing this, it is important to read `Link->Dir` or `Link->Flip` **after** `Waitdraw()`, then perform the `CopyTile()` operation immediately thereafter.
 
 <!-- **Example** -->
-``` C
+``` C++
 CopyTile(312,11614);
 // This will copy tile 314 to tilespace 11614. These tiles will then be identical.
 ```
@@ -112,7 +112,7 @@ void SwapTile(int firsttile, int secondtile)
 Swaps the two tiles specified by `firsttile` and `secondtile`. The valid tile value range is **0** to **65519**. This change is temporary within the quest file and will not be retained when saving the game.
 
 <!-- **Example** -->  
-``` C
+``` C++
 SwapTile(312,11614);
 // These tiles will swap their graphics: Tile 312 will become tile 11614,
 // and tile 11614 will become tile 312.
@@ -152,7 +152,7 @@ You may trace `int` and `float` types with `Trace()`. To trace boolean values, s
 Values printed to allegro.log do not, by default, incorporate any whitespace or line breaks. You must manually add these. To add new lines, see **[TraceNL()](#tracenl)** below.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 int xyz = 4;
 Trace(xyz);
 // Prints 4.000 to allegro.log.
@@ -168,7 +168,7 @@ void TraceB(bool state)
 Prints a boolean state to allegro.log (and the debug console). Similar to `Trace()`, above, except it outputs `true` or `false` as text.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 bool test = true;
 TraceB(test);
 // Prints "true" to allegro.log.
@@ -205,7 +205,7 @@ Works as Trace() above, but prints a full string to allegro.log, using the array
 Maximum 512 characters. Functions from string.zh can be used to split larger strings.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 int testString[] = "This is a string.";
 TraceS(testString);
 // Prints 'This is a string.' to allegro.log.
@@ -224,7 +224,7 @@ int SizeOfArray(int array[])
 Returns the index size of the array pointed by `array`. Works only on `int` and `float` type arrays. Boolean arrays are not supported. Useful in `for` loops. 
 
 <!-- **Example** -->
-``` C	
+``` C++	
 int isAnArray[216];
 int x;
 x = SizeOfArray(isAnArray); // becomes 216
@@ -245,7 +245,7 @@ Computes and returns a random integer from `0` to `n-1`, or a negative value bet
 :	The paramater `n` is an integer, and any floating point (ZScript float) value passed to it will be truncated (floored) to the nearest integer. `Rand(3.75)` is identical to `Rand(3)`.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 // Roll a six-sided die
 int DiceThrow;
 DiceThrow = rand(1,6);
@@ -261,7 +261,7 @@ float Max(float a, float b)
 Returns the greater of `a` and `b`.
 
 <!-- **Example** -->
-``` C
+``` C++
 int GetBigger;
 GetBigger = max(5.1, 20.5); // Returns 20.5
 ```
@@ -276,7 +276,7 @@ float Min(float a, float b)
 Returns the lesser of `a` and `b`.
 
 <!-- **Example** -->
-``` C
+``` C++
 int GetLesser;
 GetLesser = min(5.1, 20.5); // Returns 5.1
 ```
@@ -372,7 +372,7 @@ Computes the square root of the parameter. The return value is undefined for val
 :	Passing negative values to Sqrt() will return an error. See SafeSqrt() in std.zh
 
 <!-- **Example** -->
-``` C
+``` C++
 int x = Sqrt(16); // x = 4
 ```
 
@@ -388,7 +388,7 @@ float Sin(float deg)
 Returns the trigonometric sine of the parameter, which is interpreted as a degree value.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 float x = Sin(32); // x = 0.5299
 ```
 
@@ -402,7 +402,7 @@ float Cos(float deg)
 Returns the trigonometric cosine of the parameter, which is interpreted as a degree value.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 float x = Cos(40); // x = 0.7660
 ```
 
@@ -416,7 +416,7 @@ float Tan(float deg)
 Returns the trigonometric tangent of the parameter, which is interpreted as a degree value. The return value is undefined if `deg` is of the form `90 + 180n` for an integral value of `n`.
 
 <!-- **Example** -->
-``` C	
+``` C++	
 float x = Tan(100); // x = -5.6712
 ```
 

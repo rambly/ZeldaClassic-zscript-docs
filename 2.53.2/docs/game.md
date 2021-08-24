@@ -13,7 +13,7 @@ int GetCurScreen()
 Retrieves the number of the current screen within the current map.
 
 <!-- **Example** -->
-``` C
+``` C++
 // Assuming we're on the very bottom-right screen of a map (0x7F)
 
 Game->GetCurScreen()
@@ -31,7 +31,7 @@ int GetCurDMapScreen()
 Retrieves the number of the current screen within the current DMap.
 
 <!-- **Example** -->
-``` C
+``` C++
 // Assuming we're on the entrance screen of 1st.qst level 2 (0x7D)
 
 Game->GetCurScreen()
@@ -53,7 +53,7 @@ int GetCurLevel()
 Retrieves the number of the dungeon level of the current DMap. Multiple DMaps can have the same dungeon level - this signifies that they share a map, compass, level keys and such.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->GetCurLevel()
 // will be the current DMap's level
 
@@ -69,7 +69,7 @@ int GetCurMap()
 Retrieves the number of the current map.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->GetCurMap()
 // will be the current number of the map Link is on
 
@@ -85,7 +85,7 @@ int GetCurDMap()
 Returns the number of the current DMap.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->GetCurDMap()
 // will be the current loaded DMap's number
 	
@@ -233,7 +233,7 @@ int NumDeaths;
 Returns or sets the number of times Link has perished during this quest.
 
 <!-- **Example** -->
-``` C
+``` C++
 x = Game->NumDeaths(); // will be the current death counter
 Game->NumDeaths()--; // will decrement the death counter by one
 	
@@ -249,7 +249,7 @@ int Cheat;
 Returns or sets the current cheat level of the quest player. Valid values are 0, 1, 2, 3, and 4.
 
 <!-- **Example** -->
-``` C
+``` C++
 x = Game->Cheat; // will be the current cheat level
 Game->Cheat = 4; // force the cheat level to be 4
 Game->Cheat = 0; // and turn cheats off
@@ -268,7 +268,7 @@ Returns the time elapsed in this quest, in 60ths of a second. (i.e. in frames).
 The return value is undefined if TimeValid is false (see below).
 
 <!-- **Example** -->
-``` C
+``` C++
 // Assuming we've been playing for an hour, 20 minutes, and 10 seconds...
 x = Game->Time; // will be 288600
 	
@@ -455,7 +455,7 @@ The number of level-specific keys of level `i` currently under the possession of
 The valid range of values for this variable is 0 to 255.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->LKeys[3] += 4; // Gives the player four keys to Level 3.
 	
 ```
@@ -600,7 +600,7 @@ void PlaySound(int soundid)
 Plays one of the quest's sound effects. Use the `SFX_` constants in std.zh as values of `soundid`, or refer to ZQuest's menus (**Quest->Audio->SFX Data**).
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->PlaySound(SFX_DODONGO); // Play a Dodongo roar!
 Game->PlaySound(8); // This is the same thing
 	
@@ -616,7 +616,7 @@ void PlayMIDI(int MIDIid)
 Changes the current screen MIDI to `MIDIid`. Will revert to the DMap (or screen) MIDI upon leaving the screen.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->PlayMIDI(3); // Play the custom MIDI in MIDI slot 3 for the remainder of the screen
 	
 ```
@@ -631,7 +631,7 @@ int GetMIDI()
 Returns the current screen MIDI that is playing. Positive numbers are for custom MIDIs, and negative values are used for the built-in game MIDIs.
 
 <!-- **Example** -->
-``` C
+``` C++
 // If we're listening to the original Zelda overworld music...
 x = Game->GetMIDI(); // Will be -1
 	
@@ -649,7 +649,7 @@ Play the specified enhanced music if it's available. If the music cannot be play
 Returns `true` if the music file was loaded successfully. The filename cannot be more than 255 characters. If the music format does not support multiple tracks, the track argument will be ignored.
 
 <!-- **Example** -->
-``` C
+``` C++
 // Make a string with the filename of the music to play.
 int myCoolMusicFile[] = "swankytunes.nsf"; 
 
@@ -677,7 +677,7 @@ Load the filename of the given DMap's enhanced music into the string specified b
 `buf` should be at least 256 characters (i.e. 256 array elements) in size.
 
 <!-- **Example** -->
-``` C
+``` C++
 int Filename[256];
 Game->GetDMapMusicFilename(7, Filename)
 TraceS(Filename); // could be "swankytunes.nsf"
@@ -694,7 +694,7 @@ int GetDMapMusicTrack(int dmap)
 Returns the given DMap's enhanced music track. This is valid but meaningless if the music format doesn't support multiple tracks.
 
 <!-- **Example** -->
-``` C
+``` C++
 x = Game->GetDMapMusicTrack(7)
 // Will be the track number of the enhanced music associated with DMap 7
 // We can use this in tandem with Game->GetDMapMusicFilename(), like above.
@@ -711,7 +711,7 @@ void SetDMapEnhancedMusic(int dmap, int filename[], int track)
 Sets the specified DMap's enhanced music to the given filename and track number. If the music format does not support multiple tracks, the track argument will be ignored. The filename must not be more than 255 characters.
 
 <!-- **Example** -->
-``` C
+``` C++
 int MySong[255] = "CheesyPopSong.mp3"; // We need to set the string first...
 Game->SetDMapEnhancedMusic(8, MySong, 1)
 
@@ -927,7 +927,7 @@ int GetSaveName(int buffer[])
 Loads the current save file's name into `buffer`. `buffer` should be at least 9 characters long.
 
 <!-- **Example** -->
-``` C
+``` C++
 	int GameName[9];
 	Game->GetSaveName(GameName)
 	// GameName is now whatever the player set their save game name to
@@ -944,7 +944,7 @@ void SetSaveName(int name[])
 Sets the current save file's name to `name`. `name` should be no more than 9 characters long.
 
 <!-- **Example** -->
-``` C
+``` C++
 int GameName[9] = "THIEF";
 Game->SetSaveName(GameName)
 // The player's save game name is now set to "THIEF",
@@ -964,7 +964,7 @@ void End()
 Any progress made by the player that was not saved will be lost.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->End()
 // Return to the file select screen immediately after this point.
 // Any subsequent code will not run.
@@ -982,7 +982,7 @@ void Save()
 Saves the current game. This does not display the save screen; rather, it silently writes all progress to ZELDA.SAV effective immediately.
 
 <!-- **Example** -->
-``` C
+``` C++
 Game->Save()
 // All progress made up to this point is saved! Now isn't that nice?
 	
@@ -1025,7 +1025,7 @@ Loads the contents of ZQuest string `string` into `buffer`.
 Use the standalone `GetMessage()` function from std.zh or use string.zh to remove trailing whitespace while loading.
 
 <!-- **Example** -->
-``` C
+``` C++
 int message[]
 Game->GetMessage(1,message)
 // message[] could become "IT'S DANGEROUS TO GO      ALONE! TAKE THIS."
@@ -1044,7 +1044,7 @@ void GetFFCScript(int name[])
 Returns the number of the script matching `name` or -1 if there is no such script.
 
 <!-- **Example** -->
-``` C
+``` C++
 int realscript[] = "MyFunkyNPCScript";
 int fakescript[] = "ThisScriptDoesNotExist";
 

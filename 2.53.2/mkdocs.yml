@@ -1,6 +1,6 @@
 site_name: ZScript Documentation
 nav:
- - Intro: index.md
+ - Intro: zscript.md
  - Syntax: syntax.md
  - Global Functions: global.md
  - Game Functions: game.md

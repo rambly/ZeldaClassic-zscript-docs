@@ -12,7 +12,7 @@ Nearly every ZScript function corresponds to a ZASM instruction. Where possible,
 
 Internal functions and variables other than global functions are properties of **objects**, all of which are listed along the sidebar. Each object has a corresponding *typed pointer class*, and the syntax for accessing them is:
 
-``` C++
+```C
 object->property
 ```
 	
@@ -20,7 +20,7 @@ where *object* is the object's name (e.g. Link, Game, Screen) and *property* is 
 
 For example, the function `void GetCurDMap()` is a property of the `Game` object, and is called in ZScript as:
 
-``` C++
+```C
 Game->GetCurDMap();
 ```
 

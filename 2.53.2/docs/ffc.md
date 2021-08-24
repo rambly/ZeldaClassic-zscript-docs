@@ -49,7 +49,7 @@ Setting `->Data` to 0 DOES NOT clear `->Script`, and it is not treated as exitin
 ``` C++
 	int OldScriptID = MyFFC->Script;
 	MyFFC->Script = 6;
-	/// Load and begin running the script in FFC Script slot 6.
+	// Load and begin running the script in FFC Script slot 6.
 	
 ```
 
@@ -79,12 +79,11 @@ The CSet of the FFC.
 int Delay
 :	* ZASM Instruction: `DELAY<d3>`
 
-The FFC's animation delay in frames.
+The FFC's animation delay in frames.  While this is greater than 0, the FFC will not move based on its `Vx` and `Vy` components.  Combo animation and scripted movement are not affected.
 
 <!-- **Example** -->
 ``` C++
-	MyFFC->Delay = 40;
-	// Wait 40 frames before animating
+	MyFFC->Delay = 40; // Wait 40 frames before animating
 	
 ```
 
@@ -273,9 +272,15 @@ int Link
 
 The number of the FFC linked to by this FFC. Has nothing to do with the `Link` player class.
 
+When an FFC is linked to another FFC, it will ignore its own `Vx`, `Vy`, `Ax`, and `Ay`.  It will instead copy the movements of the linked FFC.  Note that scripted movement and other FFC parameters are *not* affected or copied.  Linking an FFC to itself does nothing.
+
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+	ffc MyFFC = Screen->LoadFFC(2);
+	MyFFC->Link = 1;
+	// The current screen's FFC 2 will now follow the movements of FFC 1.
+	
+```
 
 ---
 
@@ -284,12 +289,26 @@ The number of the FFC linked to by this FFC. Has nothing to do with the `Link` p
 float InitD[8]
 :	* ZASM Instruction: `FFINITD<>`, `FFINITDD<>?`, `D<>`
 
-The original values of the FFC's 8 D input values as they are stored in the .qst file, regardless of whether they have been modified by ZScript.
+The original values of the FFC's 8 D input values as they are stored in the .qst file, regardless of whether the function inputs have been modified by ZScript.
+
+These values are themselves read/writable and can be modified by script.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+	ffc script TestInitD {
+		void run(float foo) {
+			Trace(foo); // This will trace the initial value of D[0] as set in editor.
+			foo = 64;
+			Trace(foo); // This will trace 64.
+			Trace(this->InitD[0]); // This will trace the initial value of D[0] as set in editor.
+			
+			this->InitD[0] = 64;
+			Trace(this->InitD[0]); // This will trace 64.
+		}
+	}
 
+```
+	
 ---
 
 ### ffc->Misc[]
@@ -297,8 +316,10 @@ The original values of the FFC's 8 D input values as they are stored in the .qst
 float Misc[16]
 :	* ZASM Instruction: `FFMISC`, `FFMISCD`
 
-An array of 16 miscellaneous variables for you to use as you please. These variables are not saved with the FFC.
+An array of 16 miscellaneous variables for you to use as you please. These variables have no innate effects and are not saved with the FFC.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+	MyFFC->Misc[2] = 3; // Sets Misc[2] to 3
+
+```

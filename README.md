@@ -1,5 +1,5 @@
 # zscript-docs
-A nicer, prettified, organized documentation for ZScript
+A nicer, prettified, organized documentation for ZScript, the scripting language for [Zelda Classic](https://github.com/ArmageddonGames/ZeldaClassic).
 
 # Getting started on writing
 [Download and install MkDocs](https://www.mkdocs.org/getting-started/). You'll need the latest version of [Python](https://www.python.org).

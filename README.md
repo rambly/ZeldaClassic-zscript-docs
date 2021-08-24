@@ -24,3 +24,7 @@ The .md files are written using [Markdown](https://daringfireball.net/projects/m
 			This text will show up in a note box, hopefully.
 
 You can run `mkdocs serve` from the command line, then navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see the document in HTML format. If you're on Windows, you can just run the batch file. It will automatically update as you save the .md files. To close the server, just hit `CTRL-C` in the command prompt you started the server from.
+
+# What needs done?
+
+Loads of stuff. Right now, nothing beyond the `Link` class is even written out, and most code examples are unaddressed (either missing or removed). If you grep (or "Find All in Files...") for `(TODO) !`, you should get a pretty good list of stuff that needs to be done.

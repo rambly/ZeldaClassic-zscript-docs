@@ -193,7 +193,7 @@ The number of tile columns composing the FFC, or its visible width. The maximum 
 
 <!-- **Example** -->
 
-	MyFFC->TileWidth = 2; // Sets the tile colums for the FFC to 2.
+	MyFFC->TileWidth = 2; // Sets the tile columns for the FFC to 2.
 	
 ---
 
@@ -206,7 +206,7 @@ The number of tile rows composing the FFC, or its visible height. The maximum va
 
 <!-- **Example** -->
 
-	MyFFC->TileHeight = 3; // Sets the tile colums for the FFC to 3.
+	MyFFC->TileHeight = 3; // Sets the tile columns for the FFC to 3.
 	
 ---
 

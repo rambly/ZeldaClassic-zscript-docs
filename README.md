@@ -18,7 +18,7 @@ The .md files are written using [Markdown](https://daringfireball.net/projects/m
             
             This is another paragraph relevant to the above definition.
             
-* Writing three exclamation points (`!!!`) and then a word (e.g. `note` or `caution`), then indenting the following text creates an [Admonition](https://python-markdown.github.io/extensions/admonition/) note:
+* Writing three exclamation points (`!!!`) and then a word (e.g. `note` or `caution`), then indenting the following text using `TAB` creates an [Admonition](https://python-markdown.github.io/extensions/admonition/) note:
 
       !!! note
             This text will show up in a note box, hopefully.

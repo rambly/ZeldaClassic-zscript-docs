@@ -1,5 +1,7 @@
 # ZScript: Syntax, Core Functions and Variables
 
+(TODO) ! rewrite all this crap away from Zoriaspeak
+
 The functions listed in this document are all **internal** to ZQuest. They will function in any scope with no header or other import directives required.
 
 These functions are the basic building blocks of ZScript. All of the functions in header files (std.zh, string.zh, et al.) rely on these functions to work. You may think of the functions in this document as the **core functions** of ZScript, and functions in headers as extended functionality. In order to access these external functions, you will need to **import** the relevant function files, e.g. `#include "std.zh"` or `import "std.zh"`.
@@ -29,6 +31,8 @@ The `Link`, `Screen` and `Game` objects are one-of-a-kind, always available, and
 As of 2.53, it is not possible to create your own custom classes.
 
 # Typing
+
+(TODO) ! consider splitting this into a new page. something like "language properties"? reference other language manuals like PHP for a good idea of what to call it
 
 ZScript variables are of the types `int`, `float`, and `bool`. As described above, they may also be pointers to objects of the following classes: `ffc`, `item`, `npc`, `lweapon`, and `eweapon`.
 

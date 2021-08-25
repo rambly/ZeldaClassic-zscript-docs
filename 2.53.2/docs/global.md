@@ -7,29 +7,9 @@
 void Waitdraw()
 :	* ZASM Instruction: `WAITDRAW`
 
-Halts execution of the script until ZC's internal code has been run (movement, collision detection, etc.), but before the screen is drawn. This can only be used in the active global script. `Waitdraw()` should only be called from the global active script, not from FFC scripts.
+Halts execution of the script until ZC's internal code has been run (movement, collision detection, etc.), but before the screen is drawn. This can only be used in the active global script, not in other scripts.
 
-The sequence of ZC draw actions is as follows:
-
-1. FFCs (in numerical sequence, from FFC 01, to FFC 32)
-2. Enemies
-3. EWeapons
-4. Link
-5. LWeapons
-6. Hookshot
-7. Collision Checking
-8. Store Link->Input / Link->Press
-9. Waitdraw()
-10. Drawing
-11. Rendering of the Screen
-12. Screen Scrolling
-13. Drawing from FFCs
-
-!!! note
-	Drawing from FFCs technically occurs with other Drawing, but as it is issued after `Waitdraw()`, it is offset (a frame late) and renders after screen scrolling, and after any other drawing in the same frame as draw instructions from FFCs are called. To ensure that drawing done by FFCs is in sync with other drawing, it is imperative to call it from your global script, using the FFC to trigger global conditions that cause global drawing instructions that are called before `Waitdraw()` in your global active script to evaluate true. 
-
-	Anything placed after `Waitdraw()` will not present graphical effects until the next frame.  It is possible to read/store `Link->Tile`, `Link->Dir` and other variables *after* `Waitdraw()` in one frame, and then use these values to modify other pointer members so that they are drawn correctly at the next execution of `Waitdraw()`.
-
+See the "Instruction Processing Order" in "Misc" to determine what order scripts run in and what is performed before and after `Waitdraw()` returns.
 
 !!! important "Waitdraw() in FFC and item scripts"
 	As of 2.53.2, calling `Waitdraw()` in an FFC script or an item script is not allowed or advised. It will throw an error in the compiler and may result in unexpected behavior.
@@ -44,7 +24,7 @@ void Waitframe()
 Temporarily halts execution of the current script. This function returns at the beginning of the next frame of gameplay.
 
 !!! note
-	Calling Waitframe() in an item script is currently effectively identical to calling `Quit()`. This behaviour may change in future versions of ZC, and using Waitframe() in an item script is not advised. The same is true for global scripts in the `Init`, `onExit`, and `onContinue` slots.
+	Calling Waitframe() in an item script is currently effectively identical to calling `Quit()`. This behavior is different in versions after 2.53, and using Waitframe() in an item script is not advised. The same is true for global scripts in the `Init`, `onExit`, and `onContinue` slots.
 
 	It is safe to call `Waitframe()` in the active global script. Unlike with `Waitdraw()`, it is also safe to call `Waitframe()` in FFC scripts.
 
@@ -89,12 +69,12 @@ DoSomeMoreStuff(); // This command and any subsequent commands will not run.
 void CopyTile(int srctile, int desttile)
 :	* ZASM Instruction: `COPYTILERR d2,d3`, `COPYTILEVV`, `COPYTILERV`, `COPYTILEVR`
 
-Copies the tile specified by scrtile onto the tile space specified by desttile. The valid tile value range is **0** to **65519**. This change is temporary within the quest file and will not be retained when saving the game.
+Copies the tile specified by srctile onto the tile space specified by desttile. The valid tile value range is **0** to **65519**. This change is temporary within the quest file and will not be retained when saving the game.
 
 !!! tip
 	`CopyTile()` may be used to change Link's tile, by copying a tile onto whatever tile ZC is using as a source for `Link->Tile`. Thus, although you cannot write directly to `Link->Tile`, you can write to the actual tile that is being used for this Link attribute, and you can do this for any other game graphic that you need to change.
 
-	When doing this, it is important to read `Link->Dir` or `Link->Flip` **after** `Waitdraw()`, then perform the `CopyTile()` operation immediately thereafter.
+	When doing this, it is important to read `Link->Dir` or `Link->Flip` **after** `Waitdraw()`, then perform the `CopyTile()` operation immediately thereafter.  See "Instruction Processing Order" in "Misc" for more information.
 
 <!-- **Example** -->
 ``` C++
@@ -165,7 +145,7 @@ Trace(xyz);
 void TraceB(bool state)
 :	* ZASM Instruction: `TRACE2R d3`, `TRACE2V`
 
-Prints a boolean state to allegro.log (and the debug console). Similar to `Trace()`, above, except it outputs `true` or `false` as text.
+Prints a boolean state to allegro.log (and the debug console). Similar to **[Trace()](#trace)**, above, except it outputs `true` or `false` as text.
 
 <!-- **Example** -->
 ``` C++	
@@ -241,14 +221,15 @@ int Rand(int n)
 
 Computes and returns a random integer from `0` to `n-1`, or a negative value between `n+1` and `0` if `n` is negative.
 
-**NOTE**
-:	The paramater `n` is an integer, and any floating point (ZScript float) value passed to it will be truncated (floored) to the nearest integer. `Rand(3.75)` is identical to `Rand(3)`.
+!!! note
+	The paramater `n` is an integer, and any floating point (ZScript float) value passed to it will be truncated (floored) to the nearest integer. `Rand(3.75)` is identical to `Rand(3)`.
+	
+	There is a std.zh function also named `Rand()` that accepts two inputs for a bounded random number.
 
 <!-- **Example** -->
 ``` C++	
-// Roll a six-sided die
-int DiceThrow;
-DiceThrow = rand(1,6);
+Rand(40); \\Produces a random number between 0 and 39.
+Rand(-20); \\Produces a random number between -19 and 0.
 ```
 
 ---
@@ -291,8 +272,10 @@ int Pow(int base, int exp)
 Returns `base ^ exp`. The return value is undefined for `base = exp = 0`. Note also negative values of `exp` may not be useful, as the return value is truncated to the nearest integer.
 
 <!-- **Example** -->
-!!! error "Todo"
-	(TODO) !
+``` C++
+int Power;
+Power = Pow(2,5); // Returns 2^5, or 32
+```
 
 ---
 
@@ -303,9 +286,14 @@ int InvPow(int base, int exp)
 
 Returns `base ^ (1 / exp)`. The return value is undefined for `exp = 0`, or if `exp` is even and base is negative. Note also that negative values of `exp` may not be useful, as the return value is truncated to the nearest integer.
 
+!!! tip
+	The inverse *n*th power of a number is the same as its *n*th root.  For example, `InvPow(4,2)` is equivalent to `Sqrt(4)`.  Further increments of `exp` are equivalent to the cube root, fourth root, etc.
+
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+int InversePower;
+InversePower = InvPow(8,3); // Returns the cube root of 8, or 2
+```
 
 ---
 	
@@ -316,10 +304,6 @@ float Log10(float val)
 
 Returns the log of val to the base 10. Any value <= 0 will return 0.
 
-<!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
-
 ---
 
 ### Ln()
@@ -328,10 +312,6 @@ float Ln(float val)
 :	* ZASM Instruction: `LOGE<>`
 
 Returns the natural logarithm of val (to the base e). Any value <= 0 will return 0.
-
-<!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
 
 ---
 
@@ -343,8 +323,10 @@ int Factorial(int val)
 Returns val!. val < 0 returns 0.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+int MyFactorial;
+MyFactorial = Factorial(5); // Returns 5*4*3*2*1, or 120
+```
 
 ---
 
@@ -356,8 +338,10 @@ float Abs(float val)
 Return the absolute value of the parameter, if possible. If the absolute value would overflow the parameter, the return value is undefined.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++
+Abs(-5); // Returns 5
+Abs(20); // Returns 20
+```
 
 ---
 
@@ -366,7 +350,7 @@ Return the absolute value of the parameter, if possible. If the absolute value w
 float Sqrt(float val)
 :	* ZASM Instruction: `SQROOTV<><>`, `SQROOTR<><>`
 
-Computes the square root of the parameter. The return value is undefined for val < 0.
+Computes the square root of the parameter. The return value is undefined for `val < 0`.
 
 **NOTE**
 :	Passing negative values to Sqrt() will return an error. See SafeSqrt() in std.zh
@@ -430,8 +414,9 @@ float RadianSin(float rad)
 Returns the trigonometric sine of the parameter, which is interpreted as a radian value.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++	
+float x = RadianSin(3.1416); // x = 0.0000
+```
 
 ---
 
@@ -443,8 +428,9 @@ float RadianCos(float rad)
 Returns the trigonometric cosine of the parameter, which is interpreted as a radian value.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++	
+float x = RadianCos(3.1416); // x = -1.0000
+```
 
 ---
 
@@ -456,21 +442,9 @@ float RadianTan(float rad)
 Returns the trigonometric tangent of the parameter, which is interpreted as a radian value.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
-
----
-	
-### ArcTan()
-
-float ArcTan(int x, int y)
-:	* ZASM Instruction: `ARCTANR<>`
-
-Returns the trigonometric arctangent of the coordinates, which is interpreted as a radian value.
-
-<!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++	
+float x = RadianTan(3.1416); // x = 0.0000
+```
 
 ---
 
@@ -479,11 +453,14 @@ Returns the trigonometric arctangent of the coordinates, which is interpreted as
 float ArcSin(float x)
 :	* ZASM Instruction: `ARCSINR<><>`
 
-Returns the trigonometric arcsine of `x`, which is interpreted as a radian value.
+Returns the trigonometric arcsine of `x`, which is interpreted as a radian value.  The return value is undefined for `x < -1` or `x > 1`.  
+
+This function will return the lowest solution in the range of `-pi/2` to `pi/2`.
 
 <!-- **Example** -->
-!!! error "TODO"
-	(TODO) !
+``` C++	
+float x = ArcSin(0.25); // x = 0.2526
+```
 
 ---
 	
@@ -492,8 +469,24 @@ Returns the trigonometric arcsine of `x`, which is interpreted as a radian value
 float ArcCos(float x)
 :	* ZASM Instruction: `ARCCOSR<><>`, `ARCCOSV<><>`
 
-Returns the trigonometric arccosine of `x`, which is interpreted as a radian value.
+Returns the trigonometric arccosine of `x`, which is interpreted as a radian value.  The return value is undefined for `x < -1` or `x > 1`.  
+
+This function will return the lowest solution in the range of `0` to `pi`.
 
 <!-- **Example** -->
+``` C++	
+float x = ArcCos(0.25); // x = 1.3181
+```
+---
+	
+### ArcTan()
 
-	(TODO) !
+float ArcTan(int x, int y)
+:	* ZASM Instruction: `ARCTANR<>`
+
+Returns the trigonometric arctangent of the coordinates, which is interpreted as a radian value.  This is calculated from an assumed origin of `(0,0)`.
+
+<!-- **Example** -->
+``` C++	
+float x = ArcTan(1,1); // x = -0.7853
+```

@@ -33,49 +33,22 @@ ZScript always compiles down to `GOTO`, `GOTOR`, and `GOTOTRUE` instructions. Th
 
 ## Instruction Processing Order
 
-1. Instructions in **global script Init** (if starting a new game)
+1. Instructions in the **Global Init script** (if starting a new game).
+2. Instructions in the **Global OnContinue script** (if resuming a game from the file menu).
+3. Instructions in **FFC scripts.** \*
+4. Instructions in the **Global Active script** prior to `Waitdraw()`.
+5. Screen scrolling (2.50.2 or later).
+6. Screen draws occur in the order they were enqueued above.
+7. `Waitdraw()` returns in a **Global Active script**.
+8. Engine writing to `Link->Dir` and `Link->Tile`.
+9. Instructions from **Item Action scripts**.
+10.     Instructions from **Item Pickup scripts**.
+11.     Instructions in the **Global Active script** after `Waitdraw()`.
+12.     Screen Scrolling (2.50.0 and 2.50.1)
+13.     Instructions in the **Global OnExit script** (if the game is exiting).
+14.     Return to (3).
 
-2. Instructions in **global script OnContinue** (if resuming a game)
-
-3. Instructions from **FFCs that run on screen initialization**, with the exception of drawing instructions.\*
-
-4. Instructions **immediately inside the `run()` function of a global active script**, if the game has just loaded.
-
-5. Instructions **in the global active script's infinite loop** (i.e. within `while (true)`) prior to `Waitdraw()`.
-
-6. Instructions from an FFC script positioned after (an illegal) `Waitdraw()` instruction in that script from the previous frame. \*\*
-
-7. Screen bitmap drawing.
-
-8. Enqueued script drawing from the global active script (and from FFCs on the previous frame).
-
-9. **Drawing instructions in the global active script** prior to `Waitdraw()`.
-
-10. **Instructions in an FFC script**, with the exception of drawing instructions.
-
-11. Screen scrolling (in 2.50.2 and later)
-
-12. **`Waitdraw()`** in a global active script.
-
-13. Engine writing to `Link->Dir` and `Link->Tile`.
-
-14. FFCs **enqueue draws** for the next frame.
-
-15. Instructions from **item action scripts**.
-
-16. Instructions from **item collect scripts**.
-
-17. Instructions in the **global active script** that are called **after** `Waitdraw()`
-
-18. **Screen scrolling** (before 2.50.2)
-
-19. Instructions in an **OnExit script** (if the game is exiting)
-
-20. Return to **step 3**.
-
-\* *Instructions are handled on a per-FFC basis, in order of ID. That is, a script on FFC ID 1 runs, then a script on FFC ID 2, and so on. If an FFC has no script, it is skipped.*
-
-\*\* *Requires being on at least the second frame of a game session.*
+\* *Instructions are handled on a per-ffc basis, in ID order; so a script on ffc ID 1 runs, then a script on ffc ID 2, up to ffc ID 32. If an ffc has no script, it is skipped. If "Run Script at Screen Init" is checked, instructions will process until Waitframe() before the screen is loaded.*
 
 ## Pointers
 

@@ -192,8 +192,12 @@ if (!PlayerIsDancing)
 // The player is not a disco dancer, so this will evaluate to true
 
 int peanuts = 99;
-if (!peanuts == 0)
+if (!(peanuts == 0))
 // This will evaluate to true because we have a non-zero amount of peanuts
+
+if (!undeclared_variable)
+// This will evaluate to true because the variable doesn't exist,
+// and undeclared variables evaluate to false in if statements.
 ```
 
 ---
@@ -248,9 +252,8 @@ Bitwise NOT (~)
 
 `~a` inverts the bits in the operand.
 
-
 !!! error "Known Bug"
-	The bitwise NOT function does not return the expected correct value. Its usage is legal, but not recommended.
+	The bitwise `NOT` function does not return the expected correct value for non-constants. Its usage in other contexts is legal, but not recommended. (TODO) ! is this true? it seems to be the case per what emily said. check if the main factor is constants or when interacting with &=
 
 ---
 
@@ -312,7 +315,7 @@ int c = a << b; // will be 10100100b
 Right Shift (>>)
 :	* ZASM Instruction: `RSHIFTR`, `RSHIFTV`
 
-`a << b` shifts all bits in `a` rightward by the number of bits `b`.  `0` bits are filled from the right.
+`a >> b` shifts all bits in `a` rightward by the number of bits `b`.  `0` bits are filled from the right.
 
 ``` C++
 int a = 101001b; 

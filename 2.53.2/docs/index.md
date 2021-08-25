@@ -1,6 +1,8 @@
 # ZScript: Syntax, Core Functions and Variables
 
-(TODO) ! rewrite all this crap away from Zoriaspeak
+(TODO) ! ^ this literally says syntax and stuff i dunno. this header needs rewritten to somethinglike zkcml;mks;mkio zscript manual
+
+(TODO) ! rewrite all this stuff to be more clear and less redundant
 
 The functions listed in this document are all **internal** to ZQuest. They will function in any scope with no header or other import directives required.
 

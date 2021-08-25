@@ -69,7 +69,7 @@ DoSomeMoreStuff(); // This command and any subsequent commands will not run.
 void CopyTile(int srctile, int desttile)
 :	* ZASM Instruction: `COPYTILERR d2,d3`, `COPYTILEVV`, `COPYTILERV`, `COPYTILEVR`
 
-Copies the tile specified by srctile onto the tile space specified by desttile. The valid tile value range is **0** to **65519**. This change is temporary within the quest file and will not be retained when saving the game.
+Copies the tile specified by `srctile` onto the tile space specified by `desttile`. The valid tile value range is **0** to **65519**. This change is temporary within the quest file and will not be retained when saving the game.
 
 !!! tip
 	`CopyTile()` may be used to change Link's tile, by copying a tile onto whatever tile ZC is using as a source for `Link->Tile`. Thus, although you cannot write directly to `Link->Tile`, you can write to the actual tile that is being used for this Link attribute, and you can do this for any other game graphic that you need to change.

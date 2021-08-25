@@ -13,14 +13,14 @@ ZASM uses a series of special flags to determine how it should follow logical in
 
 #### Instructions
 
-These flags are used in evaluation instructions to determine if an instruction should run.
-
 * `SETTRUE`: Set the Script Flag TRUEFLAG. SETTRUE Sets a true condition for the Assembler, if a COMPARERV and COMPARER validate. This is used when making statements in ZScript.
 * `SETFALSE:` Set the Script Flag FALSEFLAG. ZScript does not use this. 
 * `SETMORE`: Set the Script Flag MOREFLAG. ZScript does not use this. 
 * `SETLESS`: Set the Script Flag LESSFLAG. ZScript does not use this. 
 
 #### Evaluation Instructions
+
+These flags are used in evaluation instructions to determine if an instruction should run.
 
 * `GOTOTRUE`: Executes the GOTO instruction only if the Script Flag TRUEFLAG is enabled.
 * `GOTOFALSE`: Executes the GOTO instruction only if the Script Flag FALSEFLAG is enabled.

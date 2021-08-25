@@ -139,6 +139,18 @@ if ((6 + 167) == 4) // will evaluate to false
 ```
 	
 ---
+
+Not Equal (!=)
+:	<!-- - -->
+
+Compares values `a != b` and returns `true` if they **do not** match.
+
+``` C++
+if ((2 + 2) != 5) // will evaluate to true
+if ((10 + 10) != 20) // will evaluate to false
+```
+	
+---
 	
 Less Than (<)
 :	<!-- - -->
@@ -165,8 +177,9 @@ if (1 > 9) // will evaluate to false
 ---
 
 ## Logical Operators
-:	**NOTE**
-	:	ZScript 2.53.2 does not have **LOGICAL XOR** (`^^`). It will need to be simulated using other means.
+
+!!! note
+	ZScript 2.53.2 does not have **LOGICAL XOR** (`^^`). It will need to be simulated using other means.
 
 NOT (!)
 :	<!-- - -->
@@ -179,14 +192,22 @@ if (!PlayerIsDancing)
 // The player is not a disco dancer, so this will evaluate to true
 
 int peanuts = 99;
-if (!peanuts == 0)
+if (!(peanuts == 0))
 // This will evaluate to true because we have a non-zero amount of peanuts
+
+if (!undeclared_variable)
+// This will evaluate to true because the variable doesn't exist,
+// and undeclared variables evaluate to false in if statements.
 ```
-	
+
+---
+
 Logical OR (||)
 :	<!-- - -->
 
 `a || b` evaluates to true if either condition `a` or condition `b` is true.
+
+Using `or` is equivalent to `||`.
 
 ``` C++
 int a = 1;
@@ -198,12 +219,15 @@ if ((a + 1 == 2) || (a + 5 == 17)) {
 /// Since only one of these conditions needs to be satisfied,
 /// this evaluates to true.
 ```
-	
+
+---
 	
 Logical AND (&&)
 :	<!-- - -->
 
 `a && b` evaluates to true if conditions `a` and `b` are **both** true.
+
+Using `and` is equivalent to `&&`.
 
 ``` C++
 int a = 5;
@@ -215,15 +239,94 @@ if ((a * 2 == 10) && (a - 1 == 17)) {
 /// Both of these conditions must be satsified,
 /// so this evaluates to false.
 ```
-	
+
+---
+
 ## Bitwise Operators
 
-!!! error "Todo"
-	(TODO) ! bitwise operator's goe's here ba'be
-	
+!!! note
+	You may reference a binary value using anumeric sequence, ending in `b`.
+
+Bitwise NOT (~)
+:	* ZASM Instruction: `BITNOT`
+
+`~a` inverts the bits in the operand.
+
+!!! error "Known Bug"
+	The bitwise `NOT` function does not return the expected correct value for non-constants. Its usage in other contexts is legal, but not recommended. (TODO) ! is this true? it seems to be the case per what emily said. check if the main factor is constants or when interacting with &=
+
+---
+
+Bitwise OR (|)
+:	* ZASM Instruction: `ORR`, `ORV`
+
+`a | b` returns a `1` in each bit position in which the bits of either or both operands are `1`.
+
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+int c = a | b; // will be 101011b
+```
+
+---
+
+Bitwise AND (&)
+:	* ZASM Instruction: `ANDR`, `ANDV`
+
+`a & b` returns a `1` in each bit position only in which the bits of both operands are `1`.
+
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+int c = a & b; // will be 001001b
+```
+
+---
+
+Bitwise XOR (^)
+:	* ZASM Instruction: `XORR`, `XORV`
+
+`a ^ b` returns a `1` in each bit position in which the bits of either operand are `1`, but **not** both.
+
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+int c = a | b; // will be 100010b
+```
+
+---
+
+Left Shift (<<)
+:	* ZASM Instruction: `LSHIFTR`, `LSHIFTV`
+
+`a << b` shifts all bits in `a` leftward by the number of bits `b`. `0` bits are filled from the right. If a `1` bit is shifted past the 18th bit place, the return value will become undefined.
+
+``` C++
+int a = 101001b; 
+int b = 2; 
+int c = a << b; // will be 10100100b
+```
+
+---
+
+Right Shift (>>)
+:	* ZASM Instruction: `RSHIFTR`, `RSHIFTV`
+
+`a >> b` shifts all bits in `a` rightward by the number of bits `b`.  `0` bits are filled from the right.
+
+``` C++
+int a = 101001b; 
+int b = 2; 
+int c = a << b; // will be 1010b
+```
+
+---
 ## Control Statements
 
 !!! error "Todo"
 	(TODO) ! all your ifs, buts, and coconuts
 
-	i mean, all your ifs, whiles, and fors
+	i mean, all your ifs, whiles, and fors 

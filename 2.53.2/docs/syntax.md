@@ -334,7 +334,7 @@ if ((a * 2 == 10) && (a - 1 == 17)) {
 
 !!! note
 	You may reference a binary value using a numeric sequence, ending in `b`.
-
+  
 Bitwise NOT (~)
 :	* ZASM Instruction: `BITNOT`
 
@@ -453,7 +453,6 @@ Left Shift (<<)
 
 !!! caution
 	If left shifting causes a variable to exceed the maximum integer limit of 214747 (110100011011011011b), the return will become undefined.
-
 
 ``` C++
 int a = 101001b; 

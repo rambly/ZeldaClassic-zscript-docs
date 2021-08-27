@@ -7,6 +7,7 @@ nav:
  - Screen Functions: screen.md
  - FFC Functions: ffc.md
  - Link Functions: link.md
+ - NPC Functions: npc.md
  - Misc: misc.md
 theme: readthedocs
 use_directory_urls: false

@@ -44,11 +44,24 @@ y = x - 3; // will be 4
 Increment (++)
 :	<!-- - -->
 
-Increments a value by **1**. This modifies the original variable.
+Increments a value by **1**.  This modifies the original variable.
+
+If used postfix (`x++`) the operator returns the value **before** incrementing.
+
+If used prefix (`++x`) the operator returns the value **after** incrementing.
 
 ``` C++
 int x = 17;
-x++; // will be 18
+int y = x++;
+
+// x = 18
+// y = 17, as the value was returned before incrementing x
+
+int a = 5;
+int b = ++a;
+
+// a = 6
+// b = 6, as the value was returned after incrementing a
 ```
 
 ---
@@ -58,9 +71,22 @@ Decrement (--)
 
 Decrements a value by **1**. This modifies the original variable.
 
+If used postfix (`x--`) the operator returns the value **before** incrementing.
+
+If used prefix (`--x`) the operator returns the value **after** incrementing.
+
 ``` C++
 int x = 8;
-x--; // will be 7
+int y = x--;
+
+// x = 7
+// y = 8, as the value was returned before decrementing x
+
+int a = 15;
+int b = --a;
+
+// a = 14
+// b = 14, as the value was returned after decrementing a
 ```
 	
 ---
@@ -114,6 +140,8 @@ Set (=)
 
 Sets value `a = b`.
 
+Using `:=` is equivalent to `=`.
+
 ``` C++
 int a = 3;
 int b;
@@ -122,6 +150,62 @@ b = a + 2; // 5
 
 a = 5;
 b = a + 2; // 7
+```
+
+---
+
+Addition Assignment (+=)
+:	<!-- - -->
+
+Adds values `a += b` and assigns the result to variable `a`.
+
+``` C++
+int a = 3;
+int b = 7;
+
+a += b; // a is now 10
+```
+
+---
+
+Subtraction Assignment (-=)
+:	<!-- - -->
+
+Subtracts values `a -= b` and assigns the result to variable `a`.
+
+``` C++
+int a = 10;
+int b = 5;
+
+a -= b; // a is now 5
+```
+
+---
+
+Multiplication Assignment (*=)
+:	<!-- - -->
+
+Multiplies values `a *= b` and assigns the result to variable `a`.
+
+``` C++
+int a = 20;
+int b = 2;
+
+a *= b; // a is now 40
+```
+
+---
+
+Division Assignment (/=)
+:	<!-- - -->
+
+Divides values `a /= b` and assigns the result to variable `a`.
+
+``` C++
+int a = 15;
+int b = 3;
+
+a /= b; // a is now 5
 ```
 	
 ---
@@ -132,6 +216,8 @@ Equal (==)
 :	<!-- - -->
 
 Compares values `a == b` and returns `true` if they match. **Note that this is TWO equals signs, not one. One equals sign will cause a variable to be set instead!**
+
+Using `equals` is equivalent to `==`.
 
 ``` C++
 if ((2 + 2) == 4) // will evaluate to true
@@ -144,6 +230,8 @@ Not Equal (!=)
 :	<!-- - -->
 
 Compares values `a != b` and returns `true` if they **do not** match.
+
+Using `not_eq` is equivalent to `!=`.
 
 ``` C++
 if ((2 + 2) != 5) // will evaluate to true
@@ -245,15 +333,26 @@ if ((a * 2 == 10) && (a - 1 == 17)) {
 ## Bitwise Operators
 
 !!! note
-	You may reference a binary value using anumeric sequence, ending in `b`.
-
+	You may reference a binary value using a numeric sequence, ending in `b`.
+  
 Bitwise NOT (~)
 :	* ZASM Instruction: `BITNOT`
 
 `~a` inverts the bits in the operand.
 
+Using `bitnot` or `compl` is equivalent to using `~`.
+
 !!! error "Known Bug"
-	The bitwise `NOT` function does not return the expected correct value for non-constants. Its usage in other contexts is legal, but not recommended. (TODO) ! is this true? it seems to be the case per what emily said. check if the main factor is constants or when interacting with &=
+	The bitwise `NOT` function does not return the expected correct value on its own. When used with the Bitwise AND Assign `&=`, it will return the expected value; in other contexts, its use is legal but not recommended.
+	
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+b &= (~a); 
+// ~a is expected to be 010110b.
+// This is AND assigned with b,
+// and is returned as 000010b.
+```
 
 ---
 
@@ -262,6 +361,7 @@ Bitwise OR (|)
 
 `a | b` returns a `1` in each bit position in which the bits of either or both operands are `1`.
 
+Using `bitor` is equivalent to using `|`.
 
 ``` C++
 int a = 101001b; 
@@ -276,6 +376,7 @@ Bitwise AND (&)
 
 `a & b` returns a `1` in each bit position only in which the bits of both operands are `1`.
 
+Using `bitand` is equivalent to using `&`.
 
 ``` C++
 int a = 101001b; 
@@ -290,11 +391,57 @@ Bitwise XOR (^)
 
 `a ^ b` returns a `1` in each bit position in which the bits of either operand are `1`, but **not** both.
 
+Using `bitxor` is equivalent to using `^`.
 
 ``` C++
 int a = 101001b; 
 int b = 001011b; 
-int c = a | b; // will be 100010b
+int c = a ^ b; // will be 100010b
+```
+
+---
+
+Bitwise OR Assignment (|=)
+:	<!-- - -->
+
+`a |= b` returns a `1` in each bit position in which the bits of either or both operands are `1`, then assigns the value to variable `a`.
+
+Using `or_eq` or `or_equal` is equivalent to using `|=`.
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+a |= b; // a will be 101011b
+```
+
+---
+
+Bitwise AND Assignment (&=)
+:	<!-- - -->
+
+`a &= b` returns a `1` in each bit position only in which the bits of both operands are `1`, then assigns the value to variable `a`.
+
+Using `and_eq` or `and_equal` is equivalent to using `&=`.
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+a &= b; // a will be 001001b
+```
+
+---
+
+Bitwise XOR Assignment (^=)
+:	<!-- - -->
+
+`a ^= b` returns a `1` in each bit position in which the bits of either operand are `1`, but **not** both. It then assigns the value to variable `a`.
+
+Using `xor_eq` or `xor_equal` is equivalent to using `&=`.
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+a ^= b; // a will be 100010b
 ```
 
 ---
@@ -302,7 +449,10 @@ int c = a | b; // will be 100010b
 Left Shift (<<)
 :	* ZASM Instruction: `LSHIFTR`, `LSHIFTV`
 
-`a << b` shifts all bits in `a` leftward by the number of bits `b`. `0` bits are filled from the right. If a `1` bit is shifted past the 18th bit place, the return value will become undefined.
+`a << b` shifts all bits in `a` leftward by the number of bits `b`. `0` bits are filled from the right. 
+
+!!! caution
+	If left shifting causes a variable to exceed the maximum integer limit of 214747 (110100011011011011b), the return will become undefined.
 
 ``` C++
 int a = 101001b; 

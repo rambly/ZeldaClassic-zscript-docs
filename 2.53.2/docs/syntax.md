@@ -441,6 +441,36 @@ Using `xor_eq` or `xor_equal` is equivalent to using `&=`.
 ``` C++
 int a = 101001b; 
 int b = 001011b; 
+a |= b; // a will be 101011b
+```
+
+---
+
+Bitwise AND Assignment (&=)
+:	<!-- - -->
+
+`a &= b` returns a `1` in each bit position only in which the bits of both operands are `1`, then assigns the value to variable `a`.
+
+Using `and_eq` or `and_equal` is equivalent to using `&=`.
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
+a &= b; // a will be 001001b
+```
+
+---
+
+Bitwise XOR Assignment (^=)
+:	<!-- - -->
+
+`a ^= b` returns a `1` in each bit position in which the bits of either operand are `1`, but **not** both. It then assigns the value to variable `a`.
+
+Using `xor_eq` or `xor_equal` is equivalent to using `&=`.
+
+``` C++
+int a = 101001b; 
+int b = 001011b; 
 a ^= b; // a will be 100010b
 ```
 

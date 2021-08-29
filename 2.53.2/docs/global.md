@@ -127,7 +127,7 @@ void Trace(float val)
 
 Prints a line containing a string representation of `val` to allegro.log, as well as to the debug console. This is useful for debugging scripts.
 
-You may trace `int` and `float` types with `Trace()`. To trace boolean values, see **[TraceB()](#traceb)** below. `int` values are not truncated when printed, and will always have three zeroes after the decimal point.
+You may trace `int` and `float` types with `Trace()`. To trace boolean values, see **[TraceB()](#traceb)** below. `int` values are not truncated when printed, and will always have four zeroes after the decimal point.
 
 Values printed to allegro.log do not, by default, incorporate any whitespace or line breaks. You must manually add these. To add new lines, see **[TraceNL()](#tracenl)** below.
 
@@ -156,25 +156,6 @@ TraceB(test);
 
 ---
 
-### ClearTrace()
-
-void ClearTrace()
-:	* ZASM Instruction: `TRACE4`
-
-Clears allegro.log of all current traces and messages from Zelda Classic/ZQuest. Works on a per-quest, per-session basis. Values recorded from previous sessions are not erased.
-
----
-
-### TraceNL()
-
-void TraceNL()
-:	* ZASM Instruction: `TRACE5`
-
-Traces a newline to allegro.log
-This inserts a line break/carriage return (as if pressing return/enter) into allegro.log and is useful for providing formatting to debugging.
-
----
-
 ### TraceS()
 
 void TraceS(int s[])
@@ -190,6 +171,50 @@ int testString[] = "This is a string.";
 TraceS(testString);
 // Prints 'This is a string.' to allegro.log.
 ```
+
+---
+
+### TraceToBase()
+
+void TraceToBase(int val, int base, int mindigits)
+:	* ZASM Instruction: `TRACE3`
+
+Prints a line in allegro.log as well as the debug console representing `val` in numberical base `base`.  "mindigits` can be used to specify the minimum digits displayed in the console.
+
+Can be usefuul for checking hex values or bitwise flags ORed together, or just to trace a true intenger value, as `Trace()` above always traces to four decimal places.
+
+Unlike `Trace()`, decimal values are not printed and `TraceToBase()` does not handle floats.  If you use a floating point value for `val`, it will be floored prior to conversion.
+
+<!-- **Example** -->
+``` C++	
+int val = 16;
+Trace(val);            // this will trace the decimal value "16".
+TraceToBase(val,2,1);  // this will trace the binary representation of 16, "10000b".
+TraceToBase(val,16,8); // this will trace the hex representation of 16, "0x0000000F".
+//Note that because we specified 8 for the "mindigits" input, 7 zeroes are appended.
+```
+
+
+---
+
+### TraceNL()
+
+void TraceNL()
+:	* ZASM Instruction: `TRACE5`
+
+Traces a newline to allegro.log
+This inserts a line break/carriage return (as if pressing return/enter) into allegro.log and is useful for providing formatting to debugging.
+
+
+
+---
+
+### ClearTrace()
+
+void ClearTrace()
+:	* ZASM Instruction: `TRACE4`
+
+Clears allegro.log of all current traces and messages from Zelda Classic/ZQuest. Works on a per-quest, per-session basis. Values recorded from previous sessions are not erased.
 
 ---
 

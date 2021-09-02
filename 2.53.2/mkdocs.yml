@@ -3,12 +3,14 @@ nav:
  - Intro: index.md
  - Syntax: syntax.md
  - Global Functions: global.md
- - Game Functions: game.md
- - Screen Functions: screen.md
- - FFC Functions: ffc.md
- - Link Functions: link.md
- - NPC Functions: npc.md
- - Misc: misc.md
+ - Game Methods and Properties: game.md
+ - Screen Methods and Properties: screen.md
+ - FFC Methods and Properties: ffc.md
+ - Link Methods and Properties: link.md
+ - NPC Methods and Properties: npc.md
+ - Item Methods and Properties: item.md
+ - Weapon Methods and Properties: weapon.md
+ - Reference: reference.md
 theme: readthedocs
 use_directory_urls: false
 markdown_extensions:

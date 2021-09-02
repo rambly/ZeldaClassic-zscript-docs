@@ -1,5 +1,15 @@
 # Miscellany
 
+## Header Guard
+
+Header Guard can be used to protect against duplicate `import` statements.  This can be useful when using database scripts which include their own `import` statements for convenience.
+
+In ZQuest, you can access the Header Guard setting under Tools > ZQuest Settings > Compiler.  Header Guard can be enabled or disabled.  Note that this is saved with zquest.cfg and is not a per-quest setting.
+
+If Header Guard is ENABLED, if a file would be imported more than once, it is ignored, ensuring that it is inly imported once. The compiler will detail the location of the original import and the location of the duplicate per instance of duplication.  
+
+If Header Guard is DISABLED, files are allowed to be imported more than once.  This may result in duplicate variable / function / script declaration errors.
+
 ## ZASM Flags
 
 ZASM uses a series of special flags to determine how it should follow logical instructions, including the following:

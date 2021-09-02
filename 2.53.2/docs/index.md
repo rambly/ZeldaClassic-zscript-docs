@@ -28,7 +28,7 @@ For example, the function `void GetCurDMap()` is a property of the `Game` object
 Game->GetCurDMap();
 ```
 
-The `Link`, `Screen` and `Game` objects are one-of-a-kind, always available, and don't need to be initialized. Other classes, such as `ffc`, `item`, and `npc` must be initialized as objects, however, as there can be multiple instances of each.
+The `Link`, `Screen` and `Game` objects are one-of-a-kind, always available, and don't need to be initialized. Other classes, such as `ffc`, `item`, and `npc` must be initialized as objects, however, as there can be multiple instances of each.  See "Syntax" for more information about pointers.
 
 As of 2.53, it is not possible to create your own custom classes.
 

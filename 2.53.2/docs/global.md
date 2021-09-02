@@ -181,7 +181,7 @@ void TraceToBase(int val, int base, int mindigits)
 
 Prints a line in allegro.log as well as the debug console representing `val` in numberical base `base`.  "mindigits` can be used to specify the minimum digits displayed in the console.
 
-Can be usefuul for checking hex values or bitwise flags ORed together, or just to trace a true intenger value, as **[Trace()](#trace)** above always traces to four decimal places.
+Can be useful for checking hex values or bitwise flags ORed together, or just to trace a true intenger value, as **[Trace()](#trace)** above always traces to four decimal places.
 
 Unlike `Trace()`, decimal values are not printed and `TraceToBase()` does not handle floats.  If you use a floating point value for `val`, it will be floored prior to conversion.
 
